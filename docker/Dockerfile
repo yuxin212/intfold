@@ -66,7 +66,7 @@ RUN conda update -qy conda \
     && conda install -c bioconda hmmer==3.3.2 hhsuite==3.3.0 -y \
     && python3.7 -m pip install absl-py==0.13.0 biopython==1.79 chex==0.0.7 dm-haiku==0.0.4 dm-tree==0.1.6 immutabledict==2.0.0 jax==0.2.14 ml-collections==0.1.0 numpy==1.19.5 scipy==1.7.0 tensorflow-gpu==2.5.0 \
     && python3.7 -m pip install jupyter matplotlib py3Dmol tqdm \
-    && python3.7 -m pip install --upgrade jax jaxlib==0.1.69+cuda111 -f https://storage.googleapis.com/jax-releases/jax_releases.html
+    && python3.7 -m pip install --upgrade jax==0.2.14 jaxlib>=0.1.69+cuda111 -f https://storage.googleapis.com/jax-releases/jax_releases.html
 
 # Apply OpenMM patch.
 WORKDIR /opt/conda/envs/intfold/lib/python3.7/site-packages
