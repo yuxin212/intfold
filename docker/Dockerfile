@@ -24,7 +24,6 @@ RUN (cd /app/intfold; git checkout 1d43aaff941c84dc56311076b58795797e49107b --qu
 
 # Copy current files to /app/intfold
 COPY . /app/intfold
-RUN mv /app/intfold/alphafold_model_model.py /app/intfold/alphafold/model/model.py
 
 # ColabFold patches
 WORKDIR /app/intfold
@@ -45,6 +44,8 @@ RUN patch -u alphafold/common/protein.py -i protein.patch \
     && patch -u alphafold/model/model.py -i model.patch \
     && patch -u alphafold/model/modules.py -i modules.patch \
     && patch -u alphafold/model/config.py -i config.patch 
+
+RUN mv /app/intfold/alphafold_model_model.py /app/intfold/alphafold/model/model.py
 
 # Download AlphaFold Parameter
 RUN mkdir -p /app/intfold/alphafold/data/params \
