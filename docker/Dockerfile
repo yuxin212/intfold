@@ -44,8 +44,9 @@ RUN patch -u alphafold/common/protein.py -i protein.patch \
     && patch -u alphafold/model/model.py -i model.patch \
     && patch -u alphafold/model/modules.py -i modules.patch \
     && patch -u alphafold/model/config.py -i config.patch 
-
-RUN mv /app/intfold/alphafold_model_model.py /app/intfold/alphafold/model/model.py
+    
+RUN patch -u alphafold/model/model.py -i model_output_representation.patch
+#RUN mv /app/intfold/alphafold_model_model.py /app/intfold/alphafold/model/model.py
 
 # Download AlphaFold Parameter
 RUN mkdir -p /app/intfold/alphafold/data/params \
@@ -87,9 +88,9 @@ RUN rm uniprot-filtered-reviewed_yes.tab.gz.parta*
 
 # Running from here
 WORKDIR /app/intfold
-#RUN echo $'#!/bin/bash\n \ 
-#    ldconfig\n \
-#    python /app/intfold/batch_intfold.py "$@"' > /app/run_intfold.sh \
-#    && chmod +x /app/run_intfold.sh
-RUN chmod +x /app/intfold/run_intfold.sh
+RUN echo $'#!/bin/bash\n \ 
+    ldconfig\n \
+    python /app/intfold/batch_intfold.py "$@"' > /app/run_intfold.sh \
+    && chmod +x /app/run_intfold.sh
+#RUN chmod +x /app/intfold/run_intfold.sh
 ENTRYPOINT ["/app/intfold/run_intfold.sh"]
