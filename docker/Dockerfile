@@ -21,6 +21,9 @@ RUN rm -rf /app/intfold \
     && git clone https://github.com/deepmind/alphafold.git /app/intfold
 RUN (cd /app/intfold; git checkout 1d43aaff941c84dc56311076b58795797e49107b --quiet)
 
+# Copy current files to /app/intfold
+COPY . /app/intfold
+
 # ColabFold patches
 WORKDIR /app/intfold
 RUN wget -qnc https://raw.githubusercontent.com/sokrypton/ColabFold/main/beta/colabfold.py \
@@ -77,6 +80,8 @@ RUN patch -u alphafold/relax/gpurelaxation.py -i gpurelaxation.patch
 # Prepare input data
 RUN cat uniprot-filtered-reviewed_yes.tab.gz.parta* > uniprot-filtered-reviewed_yes.tab.gz
 RUN rm uniprot-filtered-reviewed_yes.tab.gz.parta*
+
+
 
 # Finish installing and configuring 
 
