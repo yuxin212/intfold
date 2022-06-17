@@ -61,9 +61,7 @@ RUN wget -q -P /tmp \
 
 # Create conda environment and install packages
 ENV PATH="/opt/conda/bin:$PATH"
-RUN conda create -n intfold python=3.7 -y \
-    && conda activate intfold \
-    && conda update -y conda \
+RUN conda update -qy conda \
     && conda install -c conda-forge python=3.7 cudnn==8.2.1.32 cudatoolkit==11.1.1 openmm==7.5.1 pdbfixer pandas -y \
     && conda install -c bioconda hmmer==3.3.2 hhsuite==3.3.0 -y \
     && python3.7 -m pip install absl-py==0.13.0 biopython==1.79 chex==0.0.7 dm-haiku==0.0.4 dm-tree==0.1.6 immutabledict==2.0.0 jax==0.2.14 ml-collections==0.1.0 numpy==1.19.5 scipy==1.7.0 tensorflow-gpu==2.5.0 \
