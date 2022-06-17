@@ -74,7 +74,7 @@ RUN patch -p0 < /app/intfold/docker/openmm.patch
 
 # Enable GPU-accelerated relaxation.
 WORKDIR /app/intfold
-RUN patch -u alphafold/relax/gpurelaxation.py -i gpurelaxation.patch
+RUN patch -u alphafold/relax/amber_minimize.py -i gpurelaxation.patch
 
 # Prepare input data
 RUN cat uniprot-filtered-reviewed_yes.tab.gz.parta* > uniprot-filtered-reviewed_yes.tab.gz
