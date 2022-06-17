@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-swiss = pd.read_csv('../uniprot-filtered-reviewed_yes.tab.gz', sep='\t')
+swiss = pd.read_csv('/app/intfold/uniprot-filtered-reviewed_yes.tab.gz', sep='\t')
 ec_swiss = swiss[swiss['EC number'].notnull()]
 
 for i in range(ec_swiss.shape[0]):

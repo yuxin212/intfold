@@ -54,6 +54,7 @@ parser = argparse.ArgumentParser(description='Parse sequence, entry and EC numbe
 parser.add_argument('--seq', type=str, help='Amino acid sequence')
 parser.add_argument('--entry', type=str, help='Entry of the amino acid sequence')
 parser.add_argument('--ec', type=str, help='EC number of the amino acid sequence, eg: 1.1.1.1')
+parser.add_argument('--out', type=str, default='/app/intermediate/', help='Output directory')
 args = parser.parse_args()
 
 assert args.seq != None
@@ -227,13 +228,8 @@ if len(seqs) != len(homooligomers):
 full_sequence = "".join([s*h for s,h in zip(seqs,homooligomers)])
 
 # prediction directory
-output_dir = 'intermediate/{}/{}/{}/{}'.format(ec1, ec2, ec3, ec4)
+output_dir = os.path.join(args.out, ec1, ec2, ec3, ec4)
 os.makedirs(output_dir, exist_ok=True)
-#output_dir = 'prediction_' + jobname + '_' + cf.get_hash(full_sequence)[:5]
-#os.makedirs(output_dir, exist_ok=True)
-# delete existing files in working directory
-#for f in os.listdir(output_dir):
-#  os.remove(os.path.join(output_dir, f))
 
 MIN_SEQUENCE_LENGTH = 16
 MAX_SEQUENCE_LENGTH = 2500
