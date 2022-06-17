@@ -69,7 +69,7 @@ RUN conda update -qy conda \
     && python3.7 -m pip install --upgrade jax==0.2.14 jaxlib>=0.1.69+cuda111 -f https://storage.googleapis.com/jax-releases/jax_releases.html
 
 # Apply OpenMM patch.
-WORKDIR /opt/conda/envs/intfold/lib/python3.7/site-packages
+WORKDIR /opt/conda/lib/python3.7/site-packages
 RUN patch -p0 < /app/intfold/docker/openmm.patch
 
 # Enable GPU-accelerated relaxation.
