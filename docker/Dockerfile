@@ -4,10 +4,17 @@ ARG CUDA
 
 SHELL ["/bin/bash", "-c"]
 
-# Install Git
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y git
+# Install dependencies
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+    build-essential \
+    cmake \
+    cuda-command-line-tools-$(cut -f1,2 -d- <<< ${CUDA//./-}) \
+    git \
+    hmmer \
+    kalign \
+    tzdata \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
 
 # Download Original AlphaFold
 RUN rm -rf /app/intfold \
