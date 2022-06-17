@@ -24,6 +24,7 @@ RUN (cd /app/intfold; git checkout 1d43aaff941c84dc56311076b58795797e49107b --qu
 
 # Copy current files to /app/intfold
 COPY . /app/intfold
+RUN mv alphafold_model_model.py /app/intfold/alphafold/model/
 
 # ColabFold patches
 WORKDIR /app/intfold
@@ -85,9 +86,9 @@ RUN rm uniprot-filtered-reviewed_yes.tab.gz.parta*
 
 # Running from here
 WORKDIR /app/intfold
-RUN echo $'#!/bin/bash\n \ 
-    ldconfig\n \
-    python /app/intfold/batch_intfold.py "$@"' > /app/run_intfold.sh \
-    && chmod +x /app/run_intfold.sh
-
-ENTRYPOINT ["/app/run_intfold.sh"]
+#RUN echo $'#!/bin/bash\n \ 
+#    ldconfig\n \
+#    python /app/intfold/batch_intfold.py "$@"' > /app/run_intfold.sh \
+#    && chmod +x /app/run_intfold.sh
+RUN chmod +x /app/intfold/run_intfold.sh
+ENTRYPOINT ["/app/intfold/run_intfold.sh"]
