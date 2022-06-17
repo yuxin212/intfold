@@ -44,7 +44,7 @@ RUN patch -u alphafold/common/protein.py -i protein.patch \
     && patch -u alphafold/model/model.py -i model.patch \
     && patch -u alphafold/model/modules.py -i modules.patch \
     && patch -u alphafold/model/config.py -i config.patch 
-    
+
 RUN patch -u alphafold/model/model.py -i model_output_representation.patch
 #RUN mv /app/intfold/alphafold_model_model.py /app/intfold/alphafold/model/model.py
 
@@ -93,4 +93,4 @@ RUN echo $'#!/bin/bash\n \
     python /app/intfold/batch_intfold.py "$@"' > /app/run_intfold.sh \
     && chmod +x /app/run_intfold.sh
 #RUN chmod +x /app/intfold/run_intfold.sh
-ENTRYPOINT ["/app/intfold/run_intfold.sh"]
+ENTRYPOINT ["/app/run_intfold.sh"]
