@@ -1,3 +1,4 @@
+FROM scratch
 
 # Download Original AlphaFold
 RUN rm -rf /app/intfold \
