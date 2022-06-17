@@ -1,5 +1,7 @@
 FROM scratch
 
+SHELL ["/bin/bash", "-c"]
+
 # Download Original AlphaFold
 RUN rm -rf /app/intfold \
     && git clone https://github.com/deepmind/alphafold.git /app/intfold
