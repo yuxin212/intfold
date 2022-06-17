@@ -1,4 +1,6 @@
-FROM scratch
+ARG CUDA=11.1.1
+FROM nvidia/cuda:${CUDA}-cudnn8-runtime-ubuntu18.04
+ARG CUDA
 
 SHELL ["/bin/bash", "-c"]
 
