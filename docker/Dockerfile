@@ -4,6 +4,11 @@ ARG CUDA
 
 SHELL ["/bin/bash", "-c"]
 
+# Install Git
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y git
+
 # Download Original AlphaFold
 RUN rm -rf /app/intfold \
     && git clone https://github.com/deepmind/alphafold.git /app/intfold
