@@ -34,7 +34,6 @@ RUN wget -qnc https://raw.githubusercontent.com/sokrypton/ColabFold/main/beta/co
     && wget -qnc https://raw.githubusercontent.com/sokrypton/ColabFold/main/beta/config.patch \
     && wget -qnc https://raw.githubusercontent.com/sokrypton/ColabFold/main/beta/model.patch \
     && wget -qnc https://raw.githubusercontent.com/sokrypton/ColabFold/main/beta/modules.patch \
-    && wget -qnc https://raw.githubusercontent.com/deepmind/alphafold/main/docker/openmm.patch -O ./docker/openmm.patch \
     && wget -qnc https://raw.githubusercontent.com/YoshitakaMo/localcolabfold/main/v1.0.0/gpurelaxation.patch -O gpurelaxation.patch 
 
 # HH-suite
