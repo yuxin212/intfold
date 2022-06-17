@@ -24,7 +24,7 @@ RUN (cd /app/intfold; git checkout 1d43aaff941c84dc56311076b58795797e49107b --qu
 
 # Copy current files to /app/intfold
 COPY . /app/intfold
-RUN mv alphafold_model_model.py /app/intfold/alphafold/model/
+RUN mv /app/intfold/alphafold_model_model.py /app/intfold/alphafold/model/model.py
 
 # ColabFold patches
 WORKDIR /app/intfold
