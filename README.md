@@ -60,6 +60,13 @@ Only Linux is supported to run IntFold, please install Windows Subsystem for Lin
     ```
     docker cp <container-id>:/app/intermediate/ <path to store results>
     ```
+    
+4. After copying the output, please remove the docker container
+
+    ```
+    docker stop <container-id>
+    docker rm <container-id>
+    ```
 
 ### IntFold Output
 
