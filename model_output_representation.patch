@@ -1,10 +1,11 @@
---- model.py	2022-06-17 20:41:57.129715019 +0000
-+++ alphafold_model_model.py	2022-06-17 20:41:29.377397021 +0000
-@@ -62,7 +62,7 @@
+--- model.py	2022-06-19 11:36:12.086575572 -0400
++++ model_cp.py	2022-06-19 11:43:06.105121912 -0400
+@@ -61,7 +61,8 @@
+           batch,
            is_training=is_training,
            compute_loss=False,
-           ensemble_representations=True,
--          return_representations=False)
+-          ensemble_representations=True)
++          ensemble_representations=True,
 +          return_representations=True)
  
      self.apply = jax.jit(hk.transform(_forward_fn).apply)
