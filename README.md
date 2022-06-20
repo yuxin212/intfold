@@ -46,7 +46,7 @@ Only Linux is supported to run IntFold, please install Windows Subsystem for Lin
 1. First run 
 
     ```
-    docker run --gpus <number of gpus> intfold
+    docker run --gpus <number of gpus> yuxin60/intfold:latest
     ```
     
 2. Get Container id
